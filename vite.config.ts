@@ -14,7 +14,13 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg', 'icons/*.png'],
+      includeAssets: [
+        'favicon.ico',
+        'favicon.svg',
+        'apple-touch-icon.png',
+        'masked-icon.svg',
+        'icons/*.png',
+      ],
       manifest: {
         name: 'Vodafone Cash Smart Calculator',
         short_name: 'VF Cash Calc',
