@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 export default defineConfig({
-  base: './',
+  base: '/Vodafone-Cash-Smart-Calculator-Web-App/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -14,16 +14,18 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg', 'icons/*.png'],
+      includeAssets: ['favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg', 'icons/*.png'],
       manifest: {
         name: 'Vodafone Cash Smart Calculator',
         short_name: 'VF Cash Calc',
         description:
           'Smart personal financial calculator for Vodafone Cash withdrawals, fees, and payments in Egypt',
-        theme_color: '#e60000',
-        background_color: '#ffffff',
+        theme_color: '#0f172a',
+        background_color: '#0f172a',
         display: 'standalone',
         orientation: 'portrait-primary',
+        start_url: '/Vodafone-Cash-Smart-Calculator-Web-App/',
+        scope: '/Vodafone-Cash-Smart-Calculator-Web-App/',
         icons: [
           {
             src: 'icons/icon-192x192.png',
@@ -45,6 +47,10 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
+        navigateFallback: '/Vodafone-Cash-Smart-Calculator-Web-App/index.html',
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
         runtimeCaching: [
           {
             urlPattern: ({ request }) =>
@@ -54,6 +60,13 @@ export default defineConfig({
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'static-resources',
+            },
+          },
+          {
+            urlPattern: ({ request }) => request.destination === 'image',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'image-cache',
             },
           },
         ],

@@ -5,18 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#e60000" />
+    <meta name="theme-color" content="#0f172a" />
     <meta
       name="description"
       content="Vodafone Cash Smart Calculator: Accurate personal financial calculator for withdrawals, ATM splits, virtual cards, and internet bundles in Egypt."
     />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="VF Cash Calc" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512x512.png" />
     <title>Vodafone Cash Smart Calculator</title>
   </head>
   <body
-    class="bg-slate-50 text-slate-900 antialiased selection:bg-red-500 selection:text-white min-h-screen"
+    class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-red-500 selection:text-white min-h-screen"
   >
     <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
