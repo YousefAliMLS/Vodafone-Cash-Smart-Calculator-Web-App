@@ -1,9 +1,9 @@
 import React from 'react';
-import { Globe, ShieldCheck, Wifi, WifiOff } from 'lucide-react';
+import { Globe, Moon, ShieldCheck, Sun, Wifi, WifiOff } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { language, setLanguage, isOnline, t } = useApp();
+  const { language, setLanguage, theme, toggleTheme, isOnline, t } = useApp();
 
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'ar' : 'en');
@@ -48,6 +48,24 @@ export const Header: React.FC = () => {
             <ShieldCheck className="w-3.5 h-3.5 text-slate-500" />
             <span>Local Storage</span>
           </div>
+
+          {/* Theme Toggle */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            aria-label={theme === 'dark' ? t.common.lightMode : t.common.darkMode}
+            title={theme === 'dark' ? t.common.lightMode : t.common.darkMode}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-slate-500" />
+            )}
+            <span className="hidden sm:inline">
+              {theme === 'dark' ? t.common.lightMode : t.common.darkMode}
+            </span>
+          </button>
 
           {/* Language Switch */}
           <button

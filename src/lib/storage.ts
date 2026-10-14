@@ -14,6 +14,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   depositRounding: 'whole',
   language: 'en',
   decimalPrecision: 2,
+  theme: 'dark',
 };
 
 const STORAGE_KEYS = {
@@ -33,6 +34,7 @@ export function loadSettings(): AppSettings {
     return {
       ...DEFAULT_SETTINGS,
       ...parsed,
+      theme: parsed.theme === 'light' ? 'light' : 'dark',
       balance:
         typeof parsed.balance === 'number' && isFinite(parsed.balance)
           ? parsed.balance

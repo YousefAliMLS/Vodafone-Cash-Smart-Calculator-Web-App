@@ -1,5 +1,7 @@
 export type Language = 'en' | 'ar';
 
+export type ThemeMode = 'dark' | 'light';
+
 export type FeeMode = 'percentage' | 'fixed_per_thousand';
 
 export type RoundingPolicy = 'proportional' | 'ceil' | 'floor' | 'nearest';
@@ -41,6 +43,7 @@ export interface AppSettings {
   depositRounding: DepositRounding;
   language: Language;
   decimalPrecision: number;
+  theme: ThemeMode;
 }
 
 export interface HistoryRecord {

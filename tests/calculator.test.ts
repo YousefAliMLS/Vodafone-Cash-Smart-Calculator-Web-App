@@ -24,6 +24,7 @@ const defaultSettings: AppSettings = {
   depositRounding: 'whole',
   language: 'en',
   decimalPrecision: 2,
+  theme: 'dark',
 };
 
 describe('Vodafone Cash Calculation Engine', () => {

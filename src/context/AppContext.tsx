@@ -12,7 +12,7 @@ import {
   saveLastCalculation,
   saveSettings,
 } from '../lib/storage';
-import { AppSettings, HistoryRecord, Language, LastCalculationSummary, TabType } from '../types';
+import { AppSettings, HistoryRecord, Language, LastCalculationSummary, TabType, ThemeMode } from '../types';
 
 interface AppContextType {
   settings: AppSettings;
@@ -24,6 +24,9 @@ interface AppContextType {
   setActiveTab: (tab: TabType) => void;
   language: Language;
   setLanguage: (lang: Language) => void;
+  theme: ThemeMode;
+  setTheme: (theme: ThemeMode) => void;
+  toggleTheme: () => void;
   t: typeof translations.en;
   history: HistoryRecord[];
   addHistoryRecord: (record: Omit<HistoryRecord, 'id' | 'timestamp'>) => void;
@@ -50,6 +53,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const language = settings.language;
   const balance = settings.balance;
+  const theme = settings.theme;
   const t = translations[language];
 
   // Update HTML dir and lang tags when language changes
@@ -57,6 +61,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   }, [language]);
+
+  // Apply dark mode class to html element
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   // Online / Offline monitor
   useEffect(() => {
@@ -87,6 +100,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const setLanguage = (newLang: Language) => {
     updateSettings({ language: newLang });
+  };
+
+  const setTheme = (newTheme: ThemeMode) => {
+    updateSettings({ theme: newTheme });
+  };
+
+  const toggleTheme = () => {
+    updateSettings({ theme: theme === 'dark' ? 'light' : 'dark' });
   };
 
   const restoreDefaults = () => {
@@ -158,6 +179,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setActiveTab,
         language,
         setLanguage,
+        theme,
+        setTheme,
+        toggleTheme,
         t,
         history,
         addHistoryRecord,

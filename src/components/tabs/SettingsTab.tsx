@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { Download, Info, RotateCcw, Save, Settings, Upload } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { FeeMode, RoundingPolicy } from '../../types';
+import { FeeMode, RoundingPolicy, ThemeMode } from '../../types';
 import { BalanceBanner } from '../common/BalanceBanner';
 
 export const SettingsTab: React.FC = () => {
-  const { settings, updateSettings, restoreDefaults, exportAll, importAll, t } = useApp();
+  const {
+    settings,
+    updateSettings,
+    restoreDefaults,
+    exportAll,
+    importAll,
+    theme,
+    setTheme,
+    language,
+    setLanguage,
+    t,
+  } = useApp();
 
   const [feeMode, setFeeMode] = useState<FeeMode>(settings.feeMode);
   const [feePercent, setFeePercent] = useState(settings.withdrawalFeePercent.toString());
@@ -277,7 +288,44 @@ export const SettingsTab: React.FC = () => {
           </div>
         </div>
 
-        {/* Section 4: Data Export / Import */}
+        {/* Section 4: Display and Formatting */}
+        <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
+          <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            {t.settings.uiSection}
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                {t.settings.theme}
+              </label>
+              <select
+                value={theme}
+                onChange={e => setTheme(e.target.value as ThemeMode)}
+                className="w-full px-3.5 py-2.5 text-xs font-medium border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+              >
+                <option value="dark">{t.settings.themeDark}</option>
+                <option value="light">{t.settings.themeLight}</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                {t.settings.language}
+              </label>
+              <select
+                value={language}
+                onChange={e => setLanguage(e.target.value as 'en' | 'ar')}
+                className="w-full px-3.5 py-2.5 text-xs font-medium border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+              >
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 5: Data Export / Import */}
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
           <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
             {t.settings.dataSection}
