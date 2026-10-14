@@ -4,7 +4,18 @@ import path from 'path';
 const rootDir = process.cwd();
 const excludedDirs = ['node_modules', 'dist', '.git'];
 const excludedFiles = ['package-lock.json', 'favicon.ico'];
-const allowedExtensions = ['.ts', '.tsx', '.js', '.jsx', '.json', '.md', '.html', '.css', '.yml', '.yaml'];
+const allowedExtensions = [
+  '.ts',
+  '.tsx',
+  '.js',
+  '.jsx',
+  '.json',
+  '.md',
+  '.html',
+  '.css',
+  '.yml',
+  '.yaml',
+];
 
 // Regex for em dash (U+2014) and en dash (U+2013)
 const dashRegex = /[\u2013\u2014]/;
