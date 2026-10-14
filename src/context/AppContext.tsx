@@ -12,7 +12,14 @@ import {
   saveLastCalculation,
   saveSettings,
 } from '../lib/storage';
-import { AppSettings, HistoryRecord, Language, LastCalculationSummary, TabType, ThemeMode } from '../types';
+import {
+  AppSettings,
+  HistoryRecord,
+  Language,
+  LastCalculationSummary,
+  TabType,
+  ThemeMode,
+} from '../types';
 
 interface AppContextType {
   settings: AppSettings;
