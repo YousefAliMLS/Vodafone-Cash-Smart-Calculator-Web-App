@@ -69,12 +69,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   }, [language]);
 
-  // Apply dark mode class to html element
+  // Apply dark mode class to html element and sync theme-color meta tag
   useEffect(() => {
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      if (metaTheme) metaTheme.setAttribute('content', '#0f172a');
     } else {
       document.documentElement.classList.remove('dark');
+      if (metaTheme) metaTheme.setAttribute('content', '#ffffff');
     }
   }, [theme]);
 

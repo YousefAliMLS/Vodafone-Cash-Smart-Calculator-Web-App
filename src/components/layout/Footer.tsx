@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   const { t } = useApp();
 
   return (
-    <footer className="mt-12 py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs text-slate-500 dark:text-slate-400 transition-colors">
+    <footer className="mt-12 py-8 pb-safe-bottom border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs text-slate-500 dark:text-slate-400 transition-colors pl-safe-left pr-safe-right">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center sm:text-left rtl:sm:text-right">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">

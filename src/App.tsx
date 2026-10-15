@@ -20,7 +20,7 @@ export const AppContent: React.FC = () => {
       <Header />
       <Navigation />
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pl-safe-left pr-safe-right">
         {activeTab === 'dashboard' && <DashboardTab />}
         {activeTab === 'withdrawals' && <WithdrawalTab />}
         {activeTab === 'atm_planner' && <ATMPlannerTab />}

@@ -12,6 +12,23 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  /* iOS Safe Area Inset Utilities for Dynamic Island and Home Indicator */
+  .pt-safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pb-safe-bottom {
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
+  .pl-safe-left {
+    padding-left: env(safe-area-inset-left, 0px);
+  }
+  .pr-safe-right {
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  .top-header-safe {
+    top: calc(4rem + env(safe-area-inset-top, 0px));
+  }
 }
 
 :root {

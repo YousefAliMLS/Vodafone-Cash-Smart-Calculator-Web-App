@@ -59,7 +59,7 @@ export const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-20 transition-colors">
+    <nav className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-header-safe z-20 transition-colors pl-safe-left pr-safe-right">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex space-x-1 rtl:space-x-reverse overflow-x-auto py-2.5 no-scrollbar scroll-smooth">
           {tabs.map(tab => {
